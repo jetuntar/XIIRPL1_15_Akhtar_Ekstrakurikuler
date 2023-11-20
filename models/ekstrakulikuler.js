@@ -28,6 +28,11 @@ const ekstrakulikulerSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+})
+ekstrakulikulerSchema.method("toJSON", function () {
+  const { __v, _id, ...object } = this.toObject();
+
+  return object;
 });
 
 module.exports = mongoose.model('Ekstrakulikuler', ekstrakulikulerSchema)

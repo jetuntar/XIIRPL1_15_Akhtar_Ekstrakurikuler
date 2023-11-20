@@ -27,7 +27,7 @@ module.exports = {
 
   //get a ekstra by id
   show: async (req, res) => {
-    const { id } = req.params;
+    const {id} = req.params;
     try {
       const ekstra = await Ekstrakulikuler.findOne({id})
       if (!ekstra) {
@@ -100,5 +100,28 @@ module.exports = {
     } catch (error) {
       res.status(400).json({success: false})
     }
-  }
+  },
+  //get a ekstra by nama
+  showName: async (req, res) => {
+    const {nama} = req.params;
+    try {
+      const ekstra = await Ekstrakulikuler.findOne({nama})
+      if (!ekstra) {
+        return res.status(404).json({
+          status: false,
+          message: "Data tidak ditemukan",
+        });
+      }
+  
+      res.json({
+        status: true,
+        data: ekstra,
+        method: req.method,
+        url: req.url,
+        message: "Data berhasil didapat",
+      });
+    } catch (error) {
+      res.status(400).json({success: false})
+    }
+  },
 }

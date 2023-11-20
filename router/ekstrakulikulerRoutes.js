@@ -7,6 +7,8 @@ router.get('/ekstras', ekstracontroller.index)
 
 router.get('/ekstra/:id', ekstracontroller.show)
 
+router.get('/ekstra/nama/:nama', ekstracontroller.showName)
+
 router.post('/ekstra', ekstracontroller.store)
 
 router.put('/ekstra/:id', ekstracontroller.update)
